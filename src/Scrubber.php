@@ -67,11 +67,12 @@ class Scrubber implements ScrubberInterface
         if (!$fields || !$arr) {
             return $arr;
         }
+        $fields = array_flip($fields);
         
         $scrubber = $this;
 
         $scrubberFn = function (&$val, $key) use ($fields, $replacement, &$scrubberFn, $scrubber) {
-            if (in_array($key, $fields, true)) {
+            if (isset($fields[$key])) {
                 $val = str_repeat($replacement, 8);
             } else {
                 $val = $scrubber->scrub($val, $replacement);
