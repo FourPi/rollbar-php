@@ -503,6 +503,11 @@ class Config
         return $this->sender->sendBatch($batch, $accessToken);
     }
 
+    public function wait($accessToken, $max = 0)
+    {
+          $this->sender->wait($accessToken, $max);
+    }
+
     public function handleResponse($payload, $response)
     {
         if (!is_null($this->responseHandler)) {
