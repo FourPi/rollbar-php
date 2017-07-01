@@ -117,7 +117,8 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     {
         $request = new Request();
         $request->setExtras(array("test" => "testing"));
-        $this->assertEquals("testing", $request->getExtras()["test"]);
+        $extras = $request->getExtras();
+        $this->assertEquals("testing", $extras["test"]);
     }
 
     public function testEncode()
